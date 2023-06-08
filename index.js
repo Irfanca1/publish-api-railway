@@ -22,6 +22,6 @@ app.delete(prefix + 'logout', Logout);
 app.post(prefix + 'forgotPassword', ForgotPassword);
 app.post(prefix + 'reset-password', ResetPassword);
 
-app.listen(port, () => {
+app.listen(process.env.PORT, () => {
   console.log(`Example app listening on port ${port}`);
 });
