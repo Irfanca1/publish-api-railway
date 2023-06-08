@@ -3,21 +3,21 @@
     "username": "irfanchoiruddin",
     "password": "irfanchoiruddin123",
     "database": "flight-binar",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "test": {
     "username": "postgres",
     "password": "151312",
     "database": "tiket-flight_test",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "postgres"
   },
   "production": {
     "username": "postgres",
     "password": "151312",
     "database": "tiket-flight_production",
-    "host": "127.0.0.1",
+    "host": "localhost",
     "dialect": "postgres"
   }
 }
