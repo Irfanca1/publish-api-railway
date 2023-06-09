@@ -1,7 +1,5 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-require('dotenv').config();
-const sequelize = require('./db/conn');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -12,6 +10,12 @@ app.use(bodyParser.json());
 const { verifyToken } = require('./middleware/VerifyToken');
 const { Register, Login, getUsers, Logout, ForgotPassword, ResetPassword } = require('./controller/UserController');
 const prefix = '/v1/api/';
+
+const db = require('./config/db.config.js');
+
+db.authenticate()
+  .then(() => console.log('Database connected'))
+  .catch((err) => console.log('error'));
 
 // User API
 app.get(prefix + 'users', getUsers);
@@ -25,7 +29,6 @@ app.get('/', (req, res) => {
   res.send('Ok');
 });
 
-sequelize.sync();
 app.listen(5000 || process.env.PORT, '0.0.0.0', () => {
   console.log('Server Started');
 });
