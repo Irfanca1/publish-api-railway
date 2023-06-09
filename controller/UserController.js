@@ -8,6 +8,14 @@ exports.getUsers = async (req, res) => {
     const Users = await users.findAll({
       attributes: ['id', 'username', 'email', 'nama_lengkap', 'alamat', 'nomor_telepon'],
     });
+    if (Users.length === 0) {
+      return res.status(404).json({
+        success: false,
+        message: 'No users found',
+        data: [],
+      });
+    }
+    
     res.status(200).json({
       success: true,
       message: 'List All Users',
