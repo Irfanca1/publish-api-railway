@@ -21,6 +21,10 @@ app.delete(prefix + 'logout', Logout);
 app.post(prefix + 'forgotPassword', ForgotPassword);
 app.post(prefix + 'reset-password', ResetPassword);
 
+app.get('/', (req, res) => {
+  res.send('Ok');
+});
+
 sequelize.sync();
 app.listen(5000 || process.env.PORT, '0.0.0.0', () => {
   console.log('Server Started');
