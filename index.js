@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 require('dotenv').config();
-const sequelize = require('./db/conn');
+const sequelize = require('./database');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -21,8 +21,15 @@ app.delete(prefix + 'logout', Logout);
 app.post(prefix + 'forgotPassword', ForgotPassword);
 app.post(prefix + 'reset-password', ResetPassword);
 
-// Sinkronisasi model dengan database
-sequelize.sync();
-app.listen(5000 || process.env.PORT, '0.0.0.0', () => {
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log('Connected to PostgreSQL successfully!');
+  })
+  .catch((err) => {
+    console.error('Unable to connect to the database:', err);
+  });
+
+app.listen(5000 || process.env.PORT, () => {
   console.log('Server Started');
 });
