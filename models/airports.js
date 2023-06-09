@@ -1,8 +1,7 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
-module.exports = (sequelize, DataTypes) => {
+const { DataTypes, Model } = require('sequelize');
+const sequelize = require('../config/db.config');
+module.exports = () => {
   class airports extends Model {
     /**
      * Helper method for defining associations.
@@ -13,14 +12,17 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
   }
-  airports.init({
-    nama_bandara: DataTypes.STRING,
-    kode_bandara: DataTypes.STRING,
-    kota: DataTypes.STRING,
-    negara: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'airports',
-  });
+  airports.init(
+    {
+      nama_bandara: DataTypes.STRING,
+      kode_bandara: DataTypes.STRING,
+      kota: DataTypes.STRING,
+      negara: DataTypes.STRING,
+    },
+    {
+      sequelize,
+      modelName: 'airports',
+    }
+  );
   return airports;
 };
