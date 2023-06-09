@@ -21,7 +21,6 @@ app.delete(prefix + 'logout', Logout);
 app.post(prefix + 'forgotPassword', ForgotPassword);
 app.post(prefix + 'reset-password', ResetPassword);
 
-// Sinkronisasi model dengan database
 sequelize.sync();
 app.listen(5000 || process.env.PORT, '0.0.0.0', () => {
   console.log('Server Started');
