@@ -15,7 +15,7 @@ exports.getUsers = async (req, res) => {
         data: [],
       });
     }
-    
+
     res.status(200).json({
       success: true,
       message: 'List All Users',
